@@ -29,7 +29,7 @@ import { DirectivesModule } from '../components/directives.module';<% if(filters
 import { AccountModule } from './account/account.module';
 import { AdminModule } from './admin/admin.module';<% } %>
 
-import constants from './app.constants';
+import { env } from './app.constants';
 
 export function getAuthHttp(http) {
     return new AuthHttp(new AuthConfig({
@@ -45,7 +45,7 @@ let providers: Provider[] = [{
     deps: [Http]
 }];
 
-if(constants.env === 'development') {
+if(env === 'development') {
     @Injectable()
     class HttpOptions extends BaseRequestOptions {
         merge(options: RequestOptionsArgs): RequestOptions {
